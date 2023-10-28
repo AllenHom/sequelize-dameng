@@ -10,6 +10,7 @@ const expect = chai.expect;
 
 describe('[ABSTRACT]', () => {
   describe('_groupJoinData', () => {
+
     it('should hash second nested set correctly, when has multiple primary keys and one is a Buffer', () => {
       const Team = current.define('team', {
         id: {
@@ -42,11 +43,11 @@ describe('[ABSTRACT]', () => {
       const includeOptions = {
         model: Team,
         includeMap: {
-          players: {
+          'players': {
             model: Player,
             association: Team.Player
           },
-          agents: {
+          'agents': {
             model: Agent,
             association: Team.Agent
           }
@@ -77,9 +78,7 @@ describe('[ABSTRACT]', () => {
         }
       ];
 
-      const result = Query._groupJoinData(data, includeOptions, {
-        checkExisting: true
-      });
+      const result = Query._groupJoinData(data, includeOptions, { checkExisting: true });
 
       expect(result.length).to.be.equal(1);
 
@@ -126,11 +125,11 @@ describe('[ABSTRACT]', () => {
       const includeOptions = {
         model: Team,
         includeMap: {
-          players: {
+          'players': {
             model: Player,
             association: Team.Player
           },
-          agents: {
+          'agents': {
             model: Agent,
             association: Team.Agent
           }
@@ -159,9 +158,7 @@ describe('[ABSTRACT]', () => {
         }
       ];
 
-      const result = Query._groupJoinData(data, includeOptions, {
-        checkExisting: true
-      });
+      const result = Query._groupJoinData(data, includeOptions, { checkExisting: true });
 
       expect(result.length).to.be.equal(1);
 
@@ -202,7 +199,7 @@ describe('[ABSTRACT]', () => {
       const includeOptions = {
         model: Team,
         includeMap: {
-          players: {
+          'players': {
             model: Player,
             association
           }
@@ -236,34 +233,30 @@ describe('[ABSTRACT]', () => {
         }
       ];
 
-      const result = Query._groupJoinData(data, includeOptions, {
-        checkExisting: true
-      });
+      const result = Query._groupJoinData(data, includeOptions, { checkExisting: true });
 
       expect(result.length).to.be.equal(2);
 
       expect(result[0]).to.have.property('uuid').and.be.equal(teamOneUuid);
       expect(result[0].players).to.be.deep.equal([
         {
-          id: '1-1',
-          created: new Date('2017-03-06T15:47:30.000Z'),
-          lastModified: new Date('2017-03-06T15:47:30.000Z')
+          'id': '1-1',
+          'created': new Date('2017-03-06T15:47:30.000Z'),
+          'lastModified': new Date('2017-03-06T15:47:30.000Z')
         },
         {
-          id: '1-2',
-          created: new Date('2017-03-06T15:47:30.000Z'),
-          lastModified: new Date('2017-08-24T11:16:44.000Z')
+          'id': '1-2',
+          'created': new Date('2017-03-06T15:47:30.000Z'),
+          'lastModified': new Date('2017-08-24T11:16:44.000Z')
         }
       ]);
 
       expect(result[1]).to.have.property('uuid').and.be.equal(teamTwoUuid);
-      expect(result[1].players).to.be.deep.equal([
-        {
-          id: '2-1',
-          created: new Date('2017-03-06T15:47:30.000Z'),
-          lastModified: new Date('2017-08-22T11:16:44.000Z')
-        }
-      ]);
+      expect(result[1].players).to.be.deep.equal([{
+        'id': '2-1',
+        'created': new Date('2017-03-06T15:47:30.000Z'),
+        'lastModified': new Date('2017-08-22T11:16:44.000Z')
+      }]);
     });
 
     it('should hash parents correctly, when primary key is a Buffer', () => {
@@ -286,7 +279,7 @@ describe('[ABSTRACT]', () => {
       const includeOptions = {
         model: Team,
         includeMap: {
-          players: {
+          'players': {
             model: Player,
             association
           }
@@ -317,34 +310,30 @@ describe('[ABSTRACT]', () => {
         }
       ];
 
-      const result = Query._groupJoinData(data, includeOptions, {
-        checkExisting: true
-      });
+      const result = Query._groupJoinData(data, includeOptions, { checkExisting: true });
 
       expect(result.length).to.be.equal(2);
 
       expect(result[0]).to.have.property('uuid').and.be.equal(teamOneUuid);
       expect(result[0].players).to.be.deep.equal([
         {
-          id: '1-1',
-          created: new Date('2017-03-06T15:47:30.000Z'),
-          lastModified: new Date('2017-03-06T15:47:30.000Z')
+          'id': '1-1',
+          'created': new Date('2017-03-06T15:47:30.000Z'),
+          'lastModified': new Date('2017-03-06T15:47:30.000Z')
         },
         {
-          id: '1-2',
-          created: new Date('2017-03-06T15:47:30.000Z'),
-          lastModified: new Date('2017-08-24T11:16:44.000Z')
+          'id': '1-2',
+          'created': new Date('2017-03-06T15:47:30.000Z'),
+          'lastModified': new Date('2017-08-24T11:16:44.000Z')
         }
       ]);
 
       expect(result[1]).to.have.property('uuid').and.be.equal(teamTwoUuid);
-      expect(result[1].players).to.be.deep.equal([
-        {
-          id: '2-1',
-          created: new Date('2017-03-06T15:47:30.000Z'),
-          lastModified: new Date('2017-08-22T11:16:44.000Z')
-        }
-      ]);
+      expect(result[1].players).to.be.deep.equal([{
+        'id': '2-1',
+        'created': new Date('2017-03-06T15:47:30.000Z'),
+        'lastModified': new Date('2017-08-22T11:16:44.000Z')
+      }]);
     });
 
     it('should hash nested correctly, when primary key is a Buffer', () => {
@@ -367,7 +356,7 @@ describe('[ABSTRACT]', () => {
       const includeOptions = {
         model: Team,
         includeMap: {
-          players: {
+          'players': {
             model: Player,
             association
           }
@@ -392,23 +381,21 @@ describe('[ABSTRACT]', () => {
         }
       ];
 
-      const result = Query._groupJoinData(data, includeOptions, {
-        checkExisting: true
-      });
+      const result = Query._groupJoinData(data, includeOptions, { checkExisting: true });
 
       expect(result.length).to.be.equal(1);
 
       expect(result[0]).to.have.property('id').and.be.equal('1');
       expect(result[0].players).to.be.deep.equal([
         {
-          uuid: playerOneUuid,
-          created: new Date('2017-03-06T15:47:30.000Z'),
-          lastModified: new Date('2017-03-06T15:47:30.000Z')
+          'uuid': playerOneUuid,
+          'created': new Date('2017-03-06T15:47:30.000Z'),
+          'lastModified': new Date('2017-03-06T15:47:30.000Z')
         },
         {
-          uuid: playerTwoUuid,
-          created: new Date('2017-03-06T15:47:30.000Z'),
-          lastModified: new Date('2017-08-22T11:16:44.000Z')
+          'uuid': playerTwoUuid,
+          'created': new Date('2017-03-06T15:47:30.000Z'),
+          'lastModified': new Date('2017-08-22T11:16:44.000Z')
         }
       ]);
     });
@@ -437,7 +424,7 @@ describe('[ABSTRACT]', () => {
       const includeOptions = {
         model: Team,
         includeMap: {
-          players: {
+          'players': {
             model: Player,
             association
           }
@@ -464,33 +451,31 @@ describe('[ABSTRACT]', () => {
         }
       ];
 
-      const result = Query._groupJoinData(data, includeOptions, {
-        checkExisting: true
-      });
+      const result = Query._groupJoinData(data, includeOptions, { checkExisting: true });
 
       expect(result.length).to.be.equal(1);
 
       expect(result[0]).to.have.property('id').and.be.equal('1');
       expect(result[0].players).to.be.deep.equal([
         {
-          uuid: playerOneUuid,
-          id: 'x',
-          created: new Date('2017-03-06T15:47:30.000Z'),
-          lastModified: new Date('2017-03-06T15:47:30.000Z')
+          'uuid': playerOneUuid,
+          'id': 'x',
+          'created': new Date('2017-03-06T15:47:30.000Z'),
+          'lastModified': new Date('2017-03-06T15:47:30.000Z')
         },
         {
-          uuid: playerTwoUuid,
-          id: 'y',
-          created: new Date('2017-03-06T15:47:30.000Z'),
-          lastModified: new Date('2017-08-22T11:16:44.000Z')
+          'uuid': playerTwoUuid,
+          'id': 'y',
+          'created': new Date('2017-03-06T15:47:30.000Z'),
+          'lastModified': new Date('2017-08-22T11:16:44.000Z')
         }
       ]);
     });
   });
 
   describe('_logQuery', () => {
-    beforeEach(function () {
-      this.cls = class MyQuery extends Query {};
+    beforeEach(function() {
+      this.cls = class MyQuery extends Query { };
       this.sequelizeStub = {
         log: stub(),
         options: {}
@@ -500,7 +485,7 @@ describe('[ABSTRACT]', () => {
       };
     });
 
-    it('logs before and after', function () {
+    it('logs before and after', function() {
       const debugStub = stub();
       const qry = new this.cls(this.connectionStub, this.sequelizeStub, {});
       const complete = qry._logQuery('SELECT 1', debugStub);
@@ -512,17 +497,13 @@ describe('[ABSTRACT]', () => {
       expect(debugStub).to.have.been.calledWith('Executed (test): SELECT 1');
     });
 
-    it('logs before and after with benchmark', function () {
+    it('logs before and after with benchmark', function() {
       const debugStub = stub();
-      const qry = new this.cls(this.connectionStub, this.sequelizeStub, {
-        benchmark: true
-      });
+      const qry = new this.cls(this.connectionStub, this.sequelizeStub, { benchmark: true });
       const complete = qry._logQuery('SELECT 1', debugStub);
       complete();
       expect(this.sequelizeStub.log).to.have.been.calledOnce;
-      expect(this.sequelizeStub.log).to.have.been.calledWithMatch('Executed (test): SELECT 1', match.number, {
-        benchmark: true
-      });
+      expect(this.sequelizeStub.log).to.have.been.calledWithMatch('Executed (test): SELECT 1', match.number, { benchmark: true });
 
       expect(debugStub).to.have.been.calledWith('Executing (test): SELECT 1');
       expect(debugStub).to.have.been.calledWith('Executed (test): SELECT 1');

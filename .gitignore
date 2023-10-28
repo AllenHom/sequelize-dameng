@@ -21,4 +21,3 @@ site
 .vscode/
 esdoc
 node_modules
-lib

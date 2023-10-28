@@ -7,35 +7,26 @@ const DataTypes = require('../../../lib/data-types');
 const dialect = Support.getTestDialect();
 
 describe(Support.getTestDialectTeaser('QueryInterface'), () => {
-  beforeEach(function () {
+  beforeEach(function() {
     this.sequelize.options.quoteIdenifiers = true;
     this.queryInterface = this.sequelize.getQueryInterface();
   });
 
-  afterEach(async function () {
+  afterEach(async function() {
     await Support.dropTestSchemas(this.sequelize);
   });
 
   describe('dropEnum', () => {
-    beforeEach(async function () {
-      await this.queryInterface.createTable('menus', {
-        structuretype: {
-          type: DataTypes.ENUM('menus', 'submenu', 'routine'),
-          allowNull: true
-        },
-        sequence: {
-          type: DataTypes.INTEGER,
-          allowNull: true
-        },
-        name: {
-          type: DataTypes.STRING,
-          allowNull: true
-        }
+    beforeEach(async function() {
+      await this.queryInterface.createTable('menus',  {
+        structuretype: DataTypes.ENUM('menus', 'submenu', 'routine'),
+        sequence: DataTypes.INTEGER,
+        name: DataTypes.STRING
       });
     });
 
     if (dialect === 'postgres') {
-      it('should be able to drop the specified enum', async function () {
+      it('should be able to drop the specified enum', async function() {
         await this.queryInterface.removeColumn('menus', 'structuretype');
         const enumList0 = await this.queryInterface.pgListEnums('menus');
         expect(enumList0).to.have.lengthOf(1);

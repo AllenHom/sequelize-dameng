@@ -11,7 +11,7 @@ const CLEANUP_TIMEOUT = Number.parseInt(process.env.SEQ_TEST_CLEANUP_TIMEOUT, 10
 
 let runningQueries = new Set();
 
-before(function () {
+before(function() {
   this.sequelize.addHook('beforeQuery', (options, query) => {
     runningQueries.add(query);
   });
@@ -20,11 +20,11 @@ before(function () {
   });
 });
 
-beforeEach(async function () {
+beforeEach(async function() {
   await Support.clearDatabase(this.sequelize);
 });
 
-afterEach(async function () {
+afterEach(async function() {
   // Note: recall that throwing an error from a `beforeEach` or `afterEach` hook in Mocha causes the entire test suite to abort.
 
   let runningQueriesProblem;
@@ -50,9 +50,9 @@ afterEach(async function () {
   } catch (error) {
     let message = error.message;
     if (runningQueriesProblem) {
-      message += '\n\n     Also, ' + runningQueriesProblem;
+      message += `\n\n     Also, ${runningQueriesProblem}`;
     }
-    message += '\n\n     Full test name:\n       ' + this.currentTest.fullTitle();
+    message += `\n\n     Full test name:\n       ${this.currentTest.fullTitle()}`;
 
     // Throw, aborting the entire Mocha execution
     throw new Error(message);
@@ -62,9 +62,9 @@ afterEach(async function () {
     if (this.test.ctx.currentTest.state === 'passed') {
       // `this.test.error` is an obscure Mocha API that allows failing a test from the `afterEach` hook
       // This is better than throwing because throwing would cause the entire Mocha execution to abort
-      this.test.error(new Error('This test passed, but ' + runningQueriesProblem));
+      this.test.error(new Error(`This test passed, but ${runningQueriesProblem}`));
     } else {
-      console.log('     ' + runningQueriesProblem);
+      console.log(`     ${runningQueriesProblem}`);
     }
   }
 });

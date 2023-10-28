@@ -15,14 +15,14 @@ You should now use [cls-hooked](https://github.com/Jeff-Lewis/cls-hooked) packag
 ```js
 const cls = require("cls-hooked");
 const namespace = cls.createNamespace("....");
-const Sequelize = require("sequelize-dameng");
+const Sequelize = require("sequelize");
 
 Sequelize.useCLS(namespace);
 ```
 
 ### Database Engine Support
 
-We have updated our minimum supported database engine versions. Using older database engine will show `SEQUELIZE0006` deprecation warning. Please check [ENGINE.md](https://github.com/sequelize/sequelize/blob/master/ENGINE.md) for version table.
+We have updated our minimum supported database engine versions. Using older database engine will show `SEQUELIZE0006` deprecation warning. Please check [ENGINE.md](https://github.com/sequelize/sequelize/blob/main/ENGINE.md) for version table.
 
 ### Sequelize
 

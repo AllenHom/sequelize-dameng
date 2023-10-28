@@ -26,7 +26,7 @@ Both ways to define this model are shown below. After being defined, we can acce
 ### Using [`sequelize.define`](../class/lib/sequelize.js~Sequelize.html#instance-method-define):
 
 ```js
-const { Sequelize, DataTypes } = require('sequelize-dameng');
+const { Sequelize, DataTypes } = require('sequelize');
 const sequelize = new Sequelize('sqlite::memory:');
 
 const User = sequelize.define('User', {
@@ -43,15 +43,15 @@ const User = sequelize.define('User', {
   // Other model options go here
 });
 
-// `sequelize-dameng.define` also returns the model
+// `sequelize.define` also returns the model
 console.log(User === sequelize.models.User); // true
 ```
 
 ### Extending [Model](../class/lib/model.js~Model.html)
 
 ```js
-const { Sequelize, DataTypes, Model } = require('sequelize-dameng');
-const sequelize = new Sequelize('sqlite::memory');
+const { Sequelize, DataTypes, Model } = require('sequelize');
+const sequelize = new Sequelize('sqlite::memory:');
 
 class User extends Model {}
 
@@ -167,7 +167,7 @@ console.log("All tables dropped!");
 
 ### Database safety check
 
-As shown above, the `sync` and `drop` operations are destructive. Sequelize acceps a `match` option as an additional safety check, which receives a RegExp:
+As shown above, the `sync` and `drop` operations are destructive. Sequelize accepts a `match` option as an additional safety check, which receives a RegExp:
 
 ```js
 // This will run .sync() only if database name ends with '_test'
@@ -255,10 +255,10 @@ sequelize.define('Foo', {
 
 ## Data Types
 
-Every column you define in your model must have a data type. Sequelize provides [a lot of built-in data types](https://github.com/sequelize/sequelize/blob/master/lib/data-types.js). To access a built-in data type, you must import `DataTypes`:
+Every column you define in your model must have a data type. Sequelize provides [a lot of built-in data types](https://github.com/sequelize/sequelize/blob/main/lib/data-types.js). To access a built-in data type, you must import `DataTypes`:
 
 ```js
-const { DataTypes } = require("sequelize-dameng"); // Import the built-in data types
+const { DataTypes } = require("sequelize"); // Import the built-in data types
 ```
 
 ### Strings
@@ -270,6 +270,7 @@ DataTypes.STRING.BINARY      // VARCHAR BINARY
 DataTypes.TEXT               // TEXT
 DataTypes.TEXT('tiny')       // TINYTEXT
 DataTypes.CITEXT             // CITEXT          PostgreSQL and SQLite only.
+DataTypes.TSVECTOR           // TSVECTOR        PostgreSQL only.
 ```
 
 ### Boolean
@@ -323,12 +324,12 @@ DataTypes.DATEONLY   // DATE without time
 
 ### UUIDs
 
-For UUIDs, use `DataTypes.UUID`. It becomes the `UUID` data type for PostgreSQL and SQLite, and `CHAR(36)` for MySQL. Sequelize can generate UUIDs automatically for these fields, simply use `Sequelize.UUIDV1` or `Sequelize.UUIDV4` as the default value:
+For UUIDs, use `DataTypes.UUID`. It becomes the `UUID` data type for PostgreSQL and SQLite, and `CHAR(36)` for MySQL. Sequelize can generate UUIDs automatically for these fields, simply use `DataTypes.UUIDV1` or `DataTypes.UUIDV4` as the default value:
 
 ```js
 {
   type: DataTypes.UUID,
-  defaultValue: Sequelize.UUIDV4 // Or Sequelize.UUIDV1
+  defaultValue: DataTypes.UUIDV4 // Or DataTypes.UUIDV1
 }
 ```
 
@@ -341,7 +342,7 @@ There are other data types, covered in a [separate guide](other-data-types.html)
 When defining a column, apart from specifying the `type` of the column, and the `allowNull` and `defaultValue` options mentioned above, there are a lot more options that can be used. Some examples are below.
 
 ```js
-const { Model, DataTypes, Deferrable } = require("sequelize-dameng");
+const { Model, DataTypes, Deferrable } = require("sequelize");
 
 class Foo extends Model {}
 Foo.init({

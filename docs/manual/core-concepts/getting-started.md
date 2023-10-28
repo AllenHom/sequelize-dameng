@@ -7,7 +7,7 @@ In this tutorial you will learn to make a simple setup of Sequelize.
 Sequelize is available via [npm](https://www.npmjs.com/package/sequelize) (or [yarn](https://yarnpkg.com/package/sequelize)).
 
 ```sh
-npm install --save sequelize-dameng
+npm install --save sequelize
 ```
 
 You'll also have to manually install the driver for your database of choice:
@@ -26,7 +26,7 @@ $ npm install --save tedious # Microsoft SQL Server
 To connect to the database, you must create a Sequelize instance. This can be done by either passing the connection parameters separately to the Sequelize constructor or by passing a single connection URI:
 
 ```js
-const { Sequelize } = require('sequelize-dameng');
+const { Sequelize } = require('sequelize');
 
 // Option 1: Passing a connection URI
 const sequelize = new Sequelize('sqlite::memory:') // Example for sqlite
@@ -38,7 +38,7 @@ const sequelize = new Sequelize({
   storage: 'path/to/database.sqlite'
 });
 
-// Option 2: Passing parameters separately (other dialects)
+// Option 3: Passing parameters separately (other dialects)
 const sequelize = new Sequelize('database', 'username', 'password', {
   host: 'localhost',
   dialect: /* one of 'mysql' | 'mariadb' | 'postgres' | 'mssql' */
@@ -73,7 +73,7 @@ Observe that, in the examples above, `Sequelize` refers to the library itself wh
 You are encouraged to run code examples locally while reading the Sequelize docs. This will help you learn faster. The easiest way to do this is using the SQLite dialect:
 
 ```js
-const { Sequelize, Op, Model, DataTypes } = require("sequelize-dameng");
+const { Sequelize, Op, Model, DataTypes } = require("sequelize");
 const sequelize = new Sequelize("sqlite::memory:");
 
 // Code here! It works!
@@ -83,7 +83,7 @@ To experiment with the other dialects, which are harder to setup locally, you ca
 
 ## New databases versus existing databases
 
-If you are starting a project from scratch, and your database does not exist yet, Sequelize can be used since the beginning in order to automate the creation of every table in your database.
+If you are starting a project from scratch, and your database is still empty, Sequelize can be used since the beginning in order to automate the creation of every table in your database.
 
 Also, if you want to use Sequelize to connect to a database that is already filled with tables and data, that works as well! Sequelize has got you covered in both cases.
 

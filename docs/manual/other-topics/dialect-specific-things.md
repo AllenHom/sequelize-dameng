@@ -83,7 +83,7 @@ You can provide custom options to it using `dialectOptions.options` in the Seque
 
 ```js
 const sequelize = new Sequelize('database', 'username', 'password', {
-  dialect: 'postgres',
+  dialect: 'mssql',
   dialectOptions: {
     // Observe the need for this nested `options` field for MSSQL
     options: {
@@ -142,7 +142,7 @@ The `tableHint` option can be used to define a table hint. The hint must be a va
 Table hints override the default behavior of MSSQL query optimizer by specifing certain options. They only affect the table or view referenced in that clause.
 
 ```js
-const { TableHints } = require('sequelize-dameng');
+const { TableHints } = require('sequelize');
 Project.findAll({
   // adding the table hint NOLOCK
   tableHint: TableHints.NOLOCK
@@ -157,7 +157,7 @@ The `indexHints` option can be used to define index hints. The hint type must be
 Index hints [override the default behavior of the MySQL query optimizer](https://dev.mysql.com/doc/refman/5.7/en/index-hints.html).
 
 ```js
-const { IndexHints } = require("sequelize-dameng");
+const { IndexHints } = require("sequelize");
 Project.findAll({
   indexHints: [
     { type: IndexHints.USE, values: ['index_project_on_name'] }

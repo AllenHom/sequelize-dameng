@@ -9,32 +9,28 @@ const current = Support.sequelize;
 
 describe(Support.getTestDialectTeaser('Model'), () => {
   describe('paranoid', () => {
-    before(function () {
+    before(function() {
       this.clock = sinon.useFakeTimers();
     });
 
-    after(function () {
+    after(function() {
       this.clock.restore();
     });
 
-    it('should be able to soft delete with timestamps', async function () {
-      const Account = this.sequelize.define(
-        'Account',
-        {
-          ownerId: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            field: 'owner_id'
-          },
-          name: {
-            type: DataTypes.STRING
-          }
+    it('should be able to soft delete with timestamps', async function() {
+      const Account = this.sequelize.define('Account', {
+        ownerId: {
+          type: DataTypes.INTEGER,
+          allowNull: false,
+          field: 'owner_id'
         },
-        {
-          paranoid: true,
-          timestamps: true
+        name: {
+          type: DataTypes.STRING
         }
-      );
+      }, {
+        paranoid: true,
+        timestamps: true
+      });
 
       await Account.sync({ force: true });
       await Account.create({ ownerId: 12 });
@@ -51,32 +47,28 @@ describe(Support.getTestDialectTeaser('Model'), () => {
       expect(count).to.be.equal(1);
     });
 
-    it('should be able to soft delete without timestamps', async function () {
-      const Account = this.sequelize.define(
-        'Account',
-        {
-          ownerId: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            field: 'owner_id'
-          },
-          name: {
-            type: DataTypes.STRING
-          },
-          deletedAt: {
-            type: DataTypes.DATE,
-            allowNull: true,
-            field: 'deleted_at'
-          }
+    it('should be able to soft delete without timestamps', async function() {
+      const Account = this.sequelize.define('Account', {
+        ownerId: {
+          type: DataTypes.INTEGER,
+          allowNull: false,
+          field: 'owner_id'
         },
-        {
-          paranoid: true,
-          timestamps: true,
-          deletedAt: 'deletedAt',
-          createdAt: false,
-          updatedAt: false
+        name: {
+          type: DataTypes.STRING
+        },
+        deletedAt: {
+          type: DataTypes.DATE,
+          allowNull: true,
+          field: 'deleted_at'
         }
-      );
+      }, {
+        paranoid: true,
+        timestamps: true,
+        deletedAt: 'deletedAt',
+        createdAt: false,
+        updatedAt: false
+      });
 
       await Account.sync({ force: true });
       await Account.create({ ownerId: 12 });
@@ -94,53 +86,46 @@ describe(Support.getTestDialectTeaser('Model'), () => {
 
     if (current.dialect.supports.JSON) {
       describe('JSON', () => {
-        before(function () {
-          this.Model = this.sequelize.define(
-            'Model',
-            {
-              name: {
-                type: DataTypes.STRING
-              },
-              data: {
-                type: DataTypes.JSON
-              },
-              deletedAt: {
-                type: DataTypes.DATE,
-                allowNull: true,
-                field: 'deleted_at'
-              }
+        before(function() {
+          this.Model = this.sequelize.define('Model', {
+            name: {
+              type: DataTypes.STRING
             },
-            {
-              paranoid: true,
-              timestamps: true,
-              deletedAt: 'deletedAt'
+            data: {
+              type: DataTypes.JSON
+            },
+            deletedAt: {
+              type: DataTypes.DATE,
+              allowNull: true,
+              field: 'deleted_at'
             }
-          );
+          }, {
+            paranoid: true,
+            timestamps: true,
+            deletedAt: 'deletedAt'
+          });
         });
 
-        beforeEach(async function () {
+        beforeEach(async function() {
           await this.Model.sync({ force: true });
         });
 
-        it('should soft delete with JSON condition', async function () {
-          await this.Model.bulkCreate([
-            {
-              name: 'One',
-              data: {
-                field: {
-                  deep: true
-                }
-              }
-            },
-            {
-              name: 'Two',
-              data: {
-                field: {
-                  deep: false
-                }
+        it('should soft delete with JSON condition', async function() {
+          await this.Model.bulkCreate([{
+            name: 'One',
+            data: {
+              field: {
+                deep: true
               }
             }
-          ]);
+          }, {
+            name: 'Two',
+            data: {
+              field: {
+                deep: false
+              }
+            }
+          }]);
 
           await this.Model.destroy({
             where: {

@@ -10,7 +10,7 @@ const Op = Support.Sequelize.Op;
 
 describe(Support.getTestDialectTeaser('Utils'), () => {
   describe('merge', () => {
-    it('does not clone sequelize-dameng models', () => {
+    it('does not clone sequelize models', () => {
       const User = Support.sequelize.define('user');
       const merged = Utils.merge({}, { include: [{ model: User }] });
       const merged2 = Utils.merge({}, { user: User });
@@ -22,11 +22,11 @@ describe(Support.getTestDialectTeaser('Utils'), () => {
 
   describe('canTreatArrayAsAnd', () => {
     it('Array can be treated as and', () => {
-      expect(Utils.canTreatArrayAsAnd([{ uuid: 1 }])).to.equal(true);
-      expect(Utils.canTreatArrayAsAnd([{ uuid: 1 }, { uuid: 2 }, 1])).to.equal(true);
+      expect(Utils.canTreatArrayAsAnd([{ 'uuid': 1 }])).to.equal(true);
+      expect(Utils.canTreatArrayAsAnd([{ 'uuid': 1 }, { 'uuid': 2 }, 1])).to.equal(true);
       expect(Utils.canTreatArrayAsAnd([new Utils.Where('uuid', 1)])).to.equal(true);
       expect(Utils.canTreatArrayAsAnd([new Utils.Where('uuid', 1), new Utils.Where('uuid', 2)])).to.equal(true);
-      expect(Utils.canTreatArrayAsAnd([new Utils.Where('uuid', 1), { uuid: 2 }, 1])).to.equal(true);
+      expect(Utils.canTreatArrayAsAnd([new Utils.Where('uuid', 1), { 'uuid': 2 }, 1])).to.equal(true);
     });
     it('Array cannot be treated as and', () => {
       expect(Utils.canTreatArrayAsAnd([1, 'uuid'])).to.equal(false);
@@ -57,7 +57,11 @@ describe(Support.getTestDialectTeaser('Utils'), () => {
 
   describe('defaults', () => {
     it('defaults normal object', () => {
-      expect(Utils.defaults({ a: 1, c: 3 }, { b: 2 }, { c: 4, d: 4 })).to.eql({
+      expect(Utils.defaults(
+        { a: 1, c: 3 },
+        { b: 2 },
+        { c: 4, d: 4 }
+      )).to.eql({
         a: 1,
         b: 2,
         c: 3,
@@ -66,9 +70,11 @@ describe(Support.getTestDialectTeaser('Utils'), () => {
     });
 
     it('defaults symbol keys', () => {
-      expect(
-        Utils.defaults({ a: 1, [Symbol.for('c')]: 3 }, { b: 2 }, { [Symbol.for('c')]: 4, [Symbol.for('d')]: 4 })
-      ).to.eql({
+      expect(Utils.defaults(
+        { a: 1, [Symbol.for('c')]: 3 },
+        { b: 2 },
+        { [Symbol.for('c')]: 4, [Symbol.for('d')]: 4 }
+      )).to.eql({
         a: 1,
         b: 2,
         [Symbol.for('c')]: 3,
@@ -79,22 +85,24 @@ describe(Support.getTestDialectTeaser('Utils'), () => {
 
   describe('mapFinderOptions', () => {
     it('virtual attribute dependencies', () => {
-      expect(
-        Utils.mapFinderOptions(
-          {
-            attributes: ['active']
-          },
-          Support.sequelize.define('User', {
-            createdAt: {
-              type: DataTypes.DATE,
-              field: 'created_at'
-            },
-            active: {
-              type: new DataTypes.VIRTUAL(DataTypes.BOOLEAN, ['createdAt'])
-            }
-          })
-        ).attributes
-      ).to.eql([['created_at', 'createdAt']]);
+      expect(Utils.mapFinderOptions({
+        attributes: [
+          'active'
+        ]
+      }, Support.sequelize.define('User', {
+        createdAt: {
+          type: DataTypes.DATE,
+          field: 'created_at'
+        },
+        active: {
+          type: new DataTypes.VIRTUAL(DataTypes.BOOLEAN, ['createdAt'])
+        }
+      })).attributes).to.eql([
+        [
+          'created_at',
+          'createdAt'
+        ]
+      ]);
     });
 
     it('multiple calls', () => {
@@ -110,40 +118,39 @@ describe(Support.getTestDialectTeaser('Utils'), () => {
 
       expect(
         Utils.mapFinderOptions(
-          Utils.mapFinderOptions(
-            {
-              attributes: ['active']
-            },
-            Model
-          ),
+          Utils.mapFinderOptions({
+            attributes: [
+              'active'
+            ]
+          }, Model),
           Model
         ).attributes
-      ).to.eql([['created_at', 'createdAt']]);
+      ).to.eql([
+        [
+          'created_at',
+          'createdAt'
+        ]
+      ]);
     });
   });
 
   describe('mapOptionFieldNames', () => {
     it('plain where', () => {
-      expect(
-        Utils.mapOptionFieldNames(
-          {
-            where: {
-              firstName: 'Paul',
-              lastName: 'Atreides'
-            }
-          },
-          Support.sequelize.define('User', {
-            firstName: {
-              type: DataTypes.STRING,
-              field: 'first_name'
-            },
-            lastName: {
-              type: DataTypes.STRING,
-              field: 'last_name'
-            }
-          })
-        )
-      ).to.eql({
+      expect(Utils.mapOptionFieldNames({
+        where: {
+          firstName: 'Paul',
+          lastName: 'Atreides'
+        }
+      }, Support.sequelize.define('User', {
+        firstName: {
+          type: DataTypes.STRING,
+          field: 'first_name'
+        },
+        lastName: {
+          type: DataTypes.STRING,
+          field: 'last_name'
+        }
+      }))).to.eql({
         where: {
           first_name: 'Paul',
           last_name: 'Atreides'
@@ -152,28 +159,23 @@ describe(Support.getTestDialectTeaser('Utils'), () => {
     });
 
     it('Op.or where', () => {
-      expect(
-        Utils.mapOptionFieldNames(
-          {
-            where: {
-              [Op.or]: {
-                firstName: 'Paul',
-                lastName: 'Atreides'
-              }
-            }
-          },
-          Support.sequelize.define('User', {
-            firstName: {
-              type: DataTypes.STRING,
-              field: 'first_name'
-            },
-            lastName: {
-              type: DataTypes.STRING,
-              field: 'last_name'
-            }
-          })
-        )
-      ).to.eql({
+      expect(Utils.mapOptionFieldNames({
+        where: {
+          [Op.or]: {
+            firstName: 'Paul',
+            lastName: 'Atreides'
+          }
+        }
+      }, Support.sequelize.define('User', {
+        firstName: {
+          type: DataTypes.STRING,
+          field: 'first_name'
+        },
+        lastName: {
+          type: DataTypes.STRING,
+          field: 'last_name'
+        }
+      }))).to.eql({
         where: {
           [Op.or]: {
             first_name: 'Paul',
@@ -184,54 +186,50 @@ describe(Support.getTestDialectTeaser('Utils'), () => {
     });
 
     it('Op.or[] where', () => {
-      expect(
-        Utils.mapOptionFieldNames(
-          {
-            where: {
-              [Op.or]: [{ firstName: 'Paul' }, { lastName: 'Atreides' }]
-            }
-          },
-          Support.sequelize.define('User', {
-            firstName: {
-              type: DataTypes.STRING,
-              field: 'first_name'
-            },
-            lastName: {
-              type: DataTypes.STRING,
-              field: 'last_name'
-            }
-          })
-        )
-      ).to.eql({
+      expect(Utils.mapOptionFieldNames({
         where: {
-          [Op.or]: [{ first_name: 'Paul' }, { last_name: 'Atreides' }]
+          [Op.or]: [
+            { firstName: 'Paul' },
+            { lastName: 'Atreides' }
+          ]
+        }
+      }, Support.sequelize.define('User', {
+        firstName: {
+          type: DataTypes.STRING,
+          field: 'first_name'
+        },
+        lastName: {
+          type: DataTypes.STRING,
+          field: 'last_name'
+        }
+      }))).to.eql({
+        where: {
+          [Op.or]: [
+            { first_name: 'Paul' },
+            { last_name: 'Atreides' }
+          ]
         }
       });
     });
 
     it('$and where', () => {
-      expect(
-        Utils.mapOptionFieldNames(
-          {
-            where: {
-              [Op.and]: {
-                firstName: 'Paul',
-                lastName: 'Atreides'
-              }
-            }
-          },
-          Support.sequelize.define('User', {
-            firstName: {
-              type: DataTypes.STRING,
-              field: 'first_name'
-            },
-            lastName: {
-              type: DataTypes.STRING,
-              field: 'last_name'
-            }
-          })
-        )
-      ).to.eql({
+      expect(Utils.mapOptionFieldNames({
+        where: {
+          [Op.and]: {
+            firstName: 'Paul',
+            lastName: 'Atreides'
+          }
+        }
+      }, Support.sequelize.define('User', {
+        firstName: {
+          type: DataTypes.STRING,
+          field: 'first_name'
+        },
+        lastName: {
+          type: DataTypes.STRING,
+          field: 'last_name'
+        }
+      }))).to.eql({
         where: {
           [Op.and]: {
             first_name: 'Paul',
@@ -249,26 +247,15 @@ describe(Support.getTestDialectTeaser('Utils'), () => {
     const expectsql = Support.expectsql;
 
     it('accepts condition object (auto casting)', () => {
-      expectsql(
-        run(
-          sql.fn(
-            'SUM',
-            sql.cast(
-              {
-                [Op.or]: {
-                  foo: 'foo',
-                  bar: 'bar'
-                }
-              },
-              'int'
-            )
-          )
-        ),
-        {
-          default: "SUM(CAST(([foo] = 'foo' OR [bar] = 'bar') AS INT))",
-          mssql: "SUM(CAST(([foo] = N'foo' OR [bar] = N'bar') AS INT))"
+      expectsql(run(sql.fn('SUM', sql.cast({
+        [Op.or]: {
+          foo: 'foo',
+          bar: 'bar'
         }
-      );
+      }, 'int'))), {
+        default: 'SUM(CAST(([foo] = \'foo\' OR [bar] = \'bar\') AS INT))',
+        mssql: 'SUM(CAST(([foo] = N\'foo\' OR [bar] = N\'bar\') AS INT))'
+      });
     });
   });
 
@@ -283,7 +270,7 @@ describe(Support.getTestDialectTeaser('Utils'), () => {
       logger.warn('test warning');
     });
 
-    it('debugContext', () => {
+    it('debugContext',  () => {
       expect(logger.debugContext).to.be.a('function');
       const testLogger = logger.debugContext('test');
 
