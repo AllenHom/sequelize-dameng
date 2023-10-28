@@ -2,7 +2,7 @@
 
 const Support = require('../support'),
   DataTypes = require('../../../lib/data-types'),
-  Sequelize = require('../../../lib/sequelize'),
+  Sequelize = require('../../../lib/sequelize-dameng'),
   util = require('util'),
   _ = require('lodash'),
   expectsql = Support.expectsql,

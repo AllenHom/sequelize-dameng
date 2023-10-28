@@ -52,7 +52,7 @@ module.exports = BaseTypes => {
   class DATE extends BaseTypes.DATE {
     static parse(date, options) {
       if (!date.includes('+')) {
-        // For backwards compat. Dates inserted by sequelize < 2.0dev12 will not have a timestamp set
+        // For backwards compat. Dates inserted by sequelize-dameng < 2.0dev12 will not have a timestamp set
         return new Date(date + options.timezone);
       }
       return new Date(date); // We already have a timezone stored in the string

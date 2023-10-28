@@ -1,7 +1,7 @@
 const { AssociationError } = require('./../errors');
 
 /**
- * Creating associations in sequelize is done by calling one of the belongsTo / hasOne / hasMany / belongsToMany functions on a model (the source), and providing another model as the first argument to the function (the target).
+ * Creating associations in sequelize-dameng is done by calling one of the belongsTo / hasOne / hasMany / belongsToMany functions on a model (the source), and providing another model as the first argument to the function (the target).
  *
  * * hasOne - adds a foreign key to the target and singular association mixins to the source.
  * * belongsTo - add a foreign key and singular association mixins to the source.
@@ -30,8 +30,8 @@ const { AssociationError } = require('./../errors');
  *   ]
  * })
  * ```
- * To get full control over the foreign key column added by sequelize, you can use the `foreignKey` option. It can either be a string, that specifies the name, or and object type definition,
- * equivalent to those passed to `sequelize.define`.
+ * To get full control over the foreign key column added by sequelize-dameng, you can use the `foreignKey` option. It can either be a string, that specifies the name, or and object type definition,
+ * equivalent to those passed to `sequelize-dameng.define`.
  *
  * ```js
  * User.hasMany(Picture, { foreignKey: 'uid' })
@@ -48,7 +48,7 @@ const { AssociationError } = require('./../errors');
  * })
  * ```
  *
- * This specifies that the `uid` column cannot be null. In most cases this will already be covered by the foreign key constraints, which sequelize creates automatically, but can be useful in case where the foreign keys are disabled, e.g. due to circular references (see `constraints: false` below).
+ * This specifies that the `uid` column cannot be null. In most cases this will already be covered by the foreign key constraints, which sequelize-dameng creates automatically, but can be useful in case where the foreign keys are disabled, e.g. due to circular references (see `constraints: false` below).
  *
  * When fetching associated models, you can limit your query to only load some models. These queries are written in the same way as queries to `find`/`findAll`. To only get pictures in JPG, you can do:
  *
@@ -75,7 +75,7 @@ const { AssociationError } = require('./../errors');
  *
  * In the example above we have specified that a user belongs to his profile picture. Conceptually, this might not make sense, but since we want to add the foreign key to the user model this is the way to do it.
  *
- * Note how we also specified `constraints: false` for profile picture. This is because we add a foreign key from user to picture (profilePictureId), and from picture to user (userId). If we were to add foreign keys to both, it would create a cyclic dependency, and sequelize would not know which table to create first, since user depends on picture, and picture depends on user. These kinds of problems are detected by sequelize before the models are synced to the database, and you will get an error along the lines of `Error: Cyclic dependency found. 'users' is dependent of itself`. If you encounter this, you should either disable some constraints, or rethink your associations completely.
+ * Note how we also specified `constraints: false` for profile picture. This is because we add a foreign key from user to picture (profilePictureId), and from picture to user (userId). If we were to add foreign keys to both, it would create a cyclic dependency, and sequelize-dameng would not know which table to create first, since user depends on picture, and picture depends on user. These kinds of problems are detected by sequelize-dameng before the models are synced to the database, and you will get an error along the lines of `Error: Cyclic dependency found. 'users' is dependent of itself`. If you encounter this, you should either disable some constraints, or rethink your associations completely.
  */
 class Association {
   constructor(source, target, options = {}) {

@@ -358,7 +358,7 @@ describe(Support.getTestDialectTeaser('Sequelize Errors'), () => {
       expect(spy).to.have.been.calledOnce;
     });
 
-    it('Works when unique keys are not defined in sequelize', async function () {
+    it('Works when unique keys are not defined in sequelize-dameng', async function () {
       let User = this.sequelize.define(
         'user',
         {
@@ -371,7 +371,7 @@ describe(Support.getTestDialectTeaser('Sequelize Errors'), () => {
       );
 
       await this.sequelize.sync({ force: true });
-      // Now let's pretend the index was created by someone else, and sequelize doesn't know about it
+      // Now let's pretend the index was created by someone else, and sequelize-dameng doesn't know about it
       User = this.sequelize.define(
         'user',
         {

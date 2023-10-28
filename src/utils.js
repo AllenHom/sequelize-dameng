@@ -62,7 +62,7 @@ function mergeDefaults(a, b) {
 exports.mergeDefaults = mergeDefaults;
 
 // An alternative to _.merge, which doesn't clone its arguments
-// Cloning is a bad idea because options arguments may contain references to sequelize
+// Cloning is a bad idea because options arguments may contain references to sequelize-dameng
 // models - which again reference database libs which don't like to be cloned (in particular pg-native)
 function merge() {
   const result = {};
@@ -129,7 +129,7 @@ function cloneDeep(obj, onlyPlain) {
     }
 
     // If we specified to clone only plain objects & arrays, we ignore everyhing else
-    // In any case, don't clone stuff that's an object, but not a plain one - fx example sequelize models and instances
+    // In any case, don't clone stuff that's an object, but not a plain one - fx example sequelize-dameng models and instances
     if (onlyPlain || typeof elem === 'object') {
       return elem;
     }

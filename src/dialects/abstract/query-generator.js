@@ -24,7 +24,7 @@ const QuoteHelper = require('./query-generator/helpers/quote');
  */
 class QueryGenerator {
   constructor(options) {
-    if (!options.sequelize) throw new Error('QueryGenerator initialized without options.sequelize');
+    if (!options.sequelize) throw new Error('QueryGenerator initialized without options.sequelize-dameng');
     if (!options._dialect) throw new Error('QueryGenerator initialized without options._dialect');
 
     this.sequelize = options.sequelize;
@@ -582,7 +582,7 @@ class QueryGenerator {
 
     if (!options.name) {
       // Mostly for cases where addIndex is called directly by the user without an options object (for example in migrations)
-      // All calls that go through sequelize should already have a name
+      // All calls that go through sequelize-dameng should already have a name
       options = Utils.nameIndex(options, options.prefix);
     }
 
@@ -916,7 +916,7 @@ class QueryGenerator {
     }
     if (_.isPlainObject(collection) && collection.raw) {
       // simple objects with raw is no longer supported
-      throw new Error('The `{raw: "..."}` syntax is no longer supported.  Use `sequelize.literal` instead.');
+      throw new Error('The `{raw: "..."}` syntax is no longer supported.  Use `sequelize-dameng.literal` instead.');
     }
     throw new Error(`Unknown structure passed to order / group: ${util.inspect(collection)}`);
   }
@@ -2220,7 +2220,7 @@ class QueryGenerator {
       }
       mainQueryOrder.push(sql);
     } else {
-      throw new Error('Order must be type of array or instance of a valid sequelize method.');
+      throw new Error('Order must be type of array or instance of a valid sequelize-dameng method.');
     }
 
     return { mainQueryOrder, subQueryOrder };
@@ -2776,7 +2776,7 @@ class QueryGenerator {
           options.prefix
         );
       case Op.raw:
-        throw new Error('The `$raw` where property is no longer supported.  Use `sequelize.literal` instead.');
+        throw new Error('The `$raw` where property is no longer supported.  Use `sequelize-dameng.literal` instead.');
       case Op.col:
         comparator = this.OperatorMap[Op.eq];
         value = value.split('.');

@@ -7,7 +7,7 @@ const chai = require('chai'),
   Op = Sequelize.Op,
   dialect = Support.getTestDialect(),
   DataTypes = require('../../../../lib/data-types'),
-  sequelize = require('../../../../lib/sequelize');
+  sequelize = require('../../../../lib/sequelize-dameng');
 
 if (dialect.match(/^postgres/)) {
   describe('[POSTGRES Specific] DAO', () => {

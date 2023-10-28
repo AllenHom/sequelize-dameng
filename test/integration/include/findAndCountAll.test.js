@@ -393,7 +393,7 @@ describe(Support.getTestDialectTeaser('Include'), () => {
       expect(result.rows.length).to.equal(1);
     });
 
-    it('should properly work with sequelize.function', async function () {
+    it('should properly work with sequelize-dameng.function', async function () {
       const sequelize = this.sequelize;
       const User = this.sequelize.define('User', {
         id: {

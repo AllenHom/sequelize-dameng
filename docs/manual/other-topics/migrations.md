@@ -513,10 +513,10 @@ By default the CLI will create a table in your database called `SequelizeMeta` c
     "host": "127.0.0.1",
     "dialect": "mysql",
 
-    // Use a different storage type. Default: sequelize
+    // Use a different storage type. Default: sequelize-dameng
     "migrationStorage": "json",
 
-    // Use a different file name. Default: sequelize-meta.json
+    // Use a different file name. Default: sequelize-dameng-meta.json
     "migrationStoragePath": "sequelizeMeta.json",
 
     // Use a different table name. Default: SequelizeMeta
@@ -544,7 +544,7 @@ By default the CLI will not save any seed that is executed. If you choose to cha
     "dialect": "mysql",
     // Use a different storage. Default: none
     "seederStorage": "json",
-    // Use a different file name. Default: sequelize-data.json
+    // Use a different file name. Default: sequelize-dameng-data.json
     "seederStoragePath": "sequelizeData.json",
     // Use a different table name. Default: SequelizeData
     "seederStorageTableName": "sequelize_data"

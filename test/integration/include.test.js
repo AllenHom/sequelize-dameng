@@ -628,7 +628,7 @@ describe(Support.getTestDialectTeaser('Include'), () => {
     it('should support Sequelize.literal and renaming of attributes in included model attributes', async function () {
       const Post = this.sequelize.define('Post', {});
       const PostComment = this.sequelize.define('PostComment', {
-        someProperty: Sequelize.VIRTUAL, // Since we specify the AS part as a part of the literal string, not with sequelize syntax, we have to tell sequelize about the field
+        someProperty: Sequelize.VIRTUAL, // Since we specify the AS part as a part of the literal string, not with sequelize-dameng syntax, we have to tell sequelize-dameng about the field
         comment_title: Sequelize.STRING
       });
 

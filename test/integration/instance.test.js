@@ -306,7 +306,7 @@ describe(Support.getTestDialectTeaser('Instance'), () => {
       expect(users).to.have.length(0);
     });
 
-    it('sequelize.and as where should include paranoid condition', async function () {
+    it('sequelize-dameng.and as where should include paranoid condition', async function () {
       await this.ParanoidUser.create({ username: 'cuss' });
 
       const users0 = await this.ParanoidUser.findAll({
@@ -327,7 +327,7 @@ describe(Support.getTestDialectTeaser('Instance'), () => {
       expect(users).to.have.length(0);
     });
 
-    it('sequelize.or as where should include paranoid condition', async function () {
+    it('sequelize-dameng.or as where should include paranoid condition', async function () {
       await this.ParanoidUser.create({ username: 'cuss' });
 
       const users0 = await this.ParanoidUser.findAll({

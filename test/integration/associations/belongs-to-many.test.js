@@ -2672,7 +2672,7 @@ describe(Support.getTestDialectTeaser('BelongsToMany'), () => {
       this.Task = this.sequelize.define('Task', { title: DataTypes.STRING }, { tableName: 'tasks' });
     });
 
-    it('removes the primary key if it was added by sequelize', function () {
+    it('removes the primary key if it was added by sequelize-dameng', function () {
       this.UserTasks = this.sequelize.define('usertasks', {});
 
       this.User.belongsToMany(this.Task, { through: this.UserTasks });

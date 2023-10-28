@@ -10,7 +10,7 @@ const Op = Support.Sequelize.Op;
 
 describe(Support.getTestDialectTeaser('Utils'), () => {
   describe('merge', () => {
-    it('does not clone sequelize models', () => {
+    it('does not clone sequelize-dameng models', () => {
       const User = Support.sequelize.define('user');
       const merged = Utils.merge({}, { include: [{ model: User }] });
       const merged2 = Utils.merge({}, { user: User });

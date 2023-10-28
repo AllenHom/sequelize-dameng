@@ -15,7 +15,7 @@ You should now use [cls-hooked](https://github.com/Jeff-Lewis/cls-hooked) packag
 ```js
 const cls = require("cls-hooked");
 const namespace = cls.createNamespace("....");
-const Sequelize = require("sequelize");
+const Sequelize = require("sequelize-dameng");
 
 Sequelize.useCLS(namespace);
 ```

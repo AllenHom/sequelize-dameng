@@ -7,7 +7,7 @@ services:
      - mysql-57
      - postgres-95
     volumes:
-      - .:/sequelize
+      - .:/sequelize-dameng
     environment:
       SEQ_DB: sequelize_test
       SEQ_USER: sequelize_test

@@ -1,7 +1,7 @@
 import BaseError from './base-error';
 
 /**
- * Validation Error. Thrown when the sequelize validation has failed. The error contains an `errors` property,
+ * Validation Error. Thrown when the sequelize-dameng validation has failed. The error contains an `errors` property,
  * which is an array with 1 or more ValidationErrorItems, one for each validation that failed.
  *
  * @param {string} message Error message
@@ -51,7 +51,7 @@ class ValidationError extends BaseError {
 /**
  * An enum that defines valid ValidationErrorItem `origin` values
  *
- * @property CORE       {string}  specifies errors that originate from the sequelize "core"
+ * @property CORE       {string}  specifies errors that originate from the sequelize-dameng "core"
  * @property DB         {string}  specifies validation errors that originate from the storage engine
  * @property FUNCTION   {string}  specifies validation errors that originate from validator functions (both built-in and custom) defined for a given attribute
  */

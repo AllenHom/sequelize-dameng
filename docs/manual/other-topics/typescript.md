@@ -33,7 +33,7 @@ import {
   HasManyCountAssociationsMixin,
   HasManyCreateAssociationMixin,
   Optional,
-} from 'sequelize';
+} from 'sequelize-dameng';
 
 const sequelize = new Sequelize('mysql://root:asd123@localhost:3306/mydb');
 
@@ -148,7 +148,7 @@ User.init(
   },
   {
     tableName: 'users',
-    sequelize, // passing the `sequelize` instance is required
+    sequelize, // passing the `sequelize-dameng` instance is required
   },
 );
 
@@ -164,7 +164,7 @@ Address.init(
   },
   {
     tableName: 'address',
-    sequelize, // passing the `sequelize` instance is required
+    sequelize, // passing the `sequelize-dameng` instance is required
   },
 );
 
@@ -211,7 +211,7 @@ it typechecks correctly.
 -->
 
 ```ts
-import { Sequelize, Model, DataTypes } from 'sequelize';
+import { Sequelize, Model, DataTypes } from 'sequelize-dameng';
 
 const sequelize = new Sequelize('mysql://root:asd123@localhost:3306/mydb');
 
@@ -239,7 +239,7 @@ User.init(
   },
   {
     tableName: 'users',
-    sequelize, // passing the `sequelize` instance is required
+    sequelize, // passing the `sequelize-dameng` instance is required
   },
 );
 
@@ -267,7 +267,7 @@ it typechecks correctly.
 -->
 
 ```ts
-import { Sequelize, Model, DataTypes, Optional } from 'sequelize';
+import { Sequelize, Model, DataTypes, Optional } from 'sequelize-dameng';
 
 const sequelize = new Sequelize('mysql://root:asd123@localhost:3306/mydb');
 
@@ -312,7 +312,7 @@ it typechecks correctly.
 -->
 
 ```ts
-import { Sequelize, Model, DataTypes } from 'sequelize';
+import { Sequelize, Model, DataTypes } from 'sequelize-dameng';
 
 const sequelize = new Sequelize('mysql://root:asd123@localhost:3306/mydb');
 

@@ -33,7 +33,7 @@ class PostgresQueryGenerator extends AbstractQueryGenerator {
   }
 
   createSchema(schema) {
-    const databaseVersion = _.get(this, 'sequelize.options.databaseVersion', 0);
+    const databaseVersion = _.get(this, 'sequelize-dameng.options.databaseVersion', 0);
 
     if (databaseVersion && semver.gte(databaseVersion, '9.2.0')) {
       return `CREATE SCHEMA IF NOT EXISTS ${schema};`;
@@ -58,7 +58,7 @@ class PostgresQueryGenerator extends AbstractQueryGenerator {
     options = { ...options };
 
     //Postgres 9.0 does not support CREATE TABLE IF NOT EXISTS, 9.1 and above do
-    const databaseVersion = _.get(this, 'sequelize.options.databaseVersion', 0);
+    const databaseVersion = _.get(this, 'sequelize-dameng.options.databaseVersion', 0);
     const attrStr = [];
     let comments = '';
     let columnComments = '';

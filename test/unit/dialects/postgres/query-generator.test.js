@@ -557,7 +557,7 @@ if (dialect.startsWith('postgres')) {
           context: QueryGenerator
         },
         {
-          title: 'sequelize.where with .fn as attribute and default comparator',
+          title: 'sequelize-dameng.where with .fn as attribute and default comparator',
           arguments: [
             'myTable',
             function (sequelize) {
@@ -573,7 +573,7 @@ if (dialect.startsWith('postgres')) {
           needsSequelize: true
         },
         {
-          title: 'sequelize.where with .fn as attribute and LIKE comparator',
+          title: 'sequelize-dameng.where with .fn as attribute and LIKE comparator',
           arguments: [
             'myTable',
             function (sequelize) {
@@ -622,7 +622,7 @@ if (dialect.startsWith('postgres')) {
           needsSequelize: true
         },
         {
-          title: 'Combination of sequelize.fn, sequelize.col and { Op.in: ... }',
+          title: 'Combination of sequelize-dameng.fn, sequelize-dameng.col and { Op.in: ... }',
           arguments: [
             'myTable',
             function (sequelize) {
@@ -669,7 +669,7 @@ if (dialect.startsWith('postgres')) {
           needsSequelize: true
         },
         {
-          title: 'It is possible to mix sequelize.fn and string arguments to group by',
+          title: 'It is possible to mix sequelize-dameng.fn and string arguments to group by',
           arguments: [
             'myTable',
             function (sequelize) {

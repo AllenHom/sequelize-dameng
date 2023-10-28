@@ -482,9 +482,9 @@ describe(Support.getTestDialectTeaser('Model'), () => {
         });
       });
 
-      it('should support renaming of sequelize method fields', async function () {
+      it('should support renaming of sequelize-dameng method fields', async function () {
         const Test = this.sequelize.define('test', {
-          someProperty: Sequelize.VIRTUAL // Since we specify the AS part as a part of the literal string, not with sequelize syntax, we have to tell sequelize about the field
+          someProperty: Sequelize.VIRTUAL // Since we specify the AS part as a part of the literal string, not with sequelize-dameng syntax, we have to tell sequelize-dameng about the field
         });
 
         await this.sequelize.sync({ force: true });

@@ -88,7 +88,7 @@ describe('QueryGenerator', () => {
       expect(() => QG.whereItemQuery('test', { $in: [4] })).to.throw("Invalid value { '$in': [ 4 ] }");
     });
 
-    it('should correctly parse sequelize.where with .fn as logic', function () {
+    it('should correctly parse sequelize-dameng.where with .fn as logic', function () {
       const QG = getAbstractQueryGenerator(this.sequelize);
       QG.handleSequelizeMethod(
         this.sequelize.where(this.sequelize.col('foo'), 'LIKE', this.sequelize.col('bar'))
@@ -103,7 +103,7 @@ describe('QueryGenerator', () => {
       );
     });
 
-    it('should correctly escape $ in sequelize.fn arguments', function () {
+    it('should correctly escape $ in sequelize-dameng.fn arguments', function () {
       const QG = getAbstractQueryGenerator(this.sequelize);
       QG.handleSequelizeMethod(this.sequelize.fn('upper', '$user')).should.include('$$user');
     });

@@ -13,7 +13,7 @@ class ConnectionManager extends AbstractConnectionManager {
     super(dialect, sequelize);
 
     // We attempt to parse file location from a connection uri
-    // but we shouldn't match sequelize default host.
+    // but we shouldn't match sequelize-dameng default host.
     if (this.sequelize.options.host === 'localhost') {
       delete this.sequelize.options.host;
     }

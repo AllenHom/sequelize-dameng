@@ -24,7 +24,7 @@ export function escape(val: unknown, timeZone: string | null, dialect: string, f
     case 'boolean':
       // SQLite doesn't have true/false support. MySQL aliases true/false to 1/0
       // for us. Postgres actually has a boolean type with true/false literals,
-      // but sequelize doesn't use it yet.
+      // but sequelize-dameng doesn't use it yet.
       if (dialect === 'sqlite' || dialect === 'mssql') {
         return val ? '1' : '0';
       }

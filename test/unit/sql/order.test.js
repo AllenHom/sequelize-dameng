@@ -390,7 +390,7 @@ describe(Support.getTestDialectTeaser('SQL'), () => {
           Subtask.findAll({
             order: 'i am a silly string'
           })
-        ).to.eventually.be.rejectedWith(Error, 'Order must be type of array or instance of a valid sequelize method.');
+        ).to.eventually.be.rejectedWith(Error, 'Order must be type of array or instance of a valid sequelize-dameng method.');
       });
 
       it('Error when the order contains a `{raw: "..."}` object', () => {
@@ -404,7 +404,7 @@ describe(Support.getTestDialectTeaser('SQL'), () => {
           })
         ).to.eventually.be.rejectedWith(
           Error,
-          'The `{raw: "..."}` syntax is no longer supported.  Use `sequelize.literal` instead.'
+          'The `{raw: "..."}` syntax is no longer supported.  Use `sequelize-dameng.literal` instead.'
         );
       });
 
@@ -421,7 +421,7 @@ describe(Support.getTestDialectTeaser('SQL'), () => {
           })
         ).to.eventually.be.rejectedWith(
           Error,
-          'The `{raw: "..."}` syntax is no longer supported.  Use `sequelize.literal` instead.'
+          'The `{raw: "..."}` syntax is no longer supported.  Use `sequelize-dameng.literal` instead.'
         );
       });
     });

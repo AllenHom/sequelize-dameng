@@ -1,7 +1,7 @@
 {
   "name": "sequelize-dameng",
   "description": "Multi dialect ORM for Node.JS",
-  "version": "0.0.0-development",
+  "version": "0.0.1-development",
   "maintainers": [
     "Sascha Depold <sascha@depold.com>",
     "Jan Aagaard Meier <janzeh@gmail.com>",
@@ -11,12 +11,12 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/sequelize/sequelize.git"
+    "url": "https://github.com/0x32Studio/sequelize-dameng"
   },
   "bugs": {
-    "url": "https://github.com/sequelize/sequelize/issues"
+    "url": "https://github.com/0x32Studio/sequelize-dameng/issues"
   },
-  "homepage": "https://sequelize.org/",
+  "homepage": "https://github.com/0x32Studio/sequelize-dameng/",
   "main": "index.js",
   "types": "types",
   "engines": {

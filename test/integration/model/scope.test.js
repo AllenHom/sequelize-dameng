@@ -121,7 +121,7 @@ describe(Support.getTestDialectTeaser('Model'), () => {
       await this.ScopeMe.scope('issue8473').findAll();
     });
 
-    it('should not throw error with sequelize.where', async function () {
+    it('should not throw error with sequelize-dameng.where', async function () {
       const records = await this.ScopeMe.scope('like_t').findAll();
       expect(records).to.have.length(2);
     });

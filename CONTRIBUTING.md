@@ -42,7 +42,7 @@ Here comes a little surprise: You need [Node.JS](http://nodejs.org).
 Just "cd" into sequelize directory and run `npm ci`, see an example below:
 
 ```sh
-$ cd path/to/sequelize
+$ cd path/to/sequelize-dameng
 $ npm ci
 $ npm run tsc
 ```

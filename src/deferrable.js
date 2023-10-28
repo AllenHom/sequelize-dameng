@@ -63,7 +63,7 @@ class SET_IMMEDIATE extends ABSTRACT {
  * that will check the constraints immediately when the data was inserted.
  *
  * ```js
- * sequelize.define('Model', {
+ * sequelize-dameng.define('Model', {
  *   foreign_id: {
  *     type: Sequelize.INTEGER,
  *     references: {
@@ -80,7 +80,7 @@ class SET_IMMEDIATE extends ABSTRACT {
  * to be checked at the very end of the transaction.
  *
  * ```js
- * sequelize.transaction({
+ * sequelize-dameng.transaction({
  *   deferrable: Sequelize.Deferrable.SET_DEFERRED
  * });
  * ```

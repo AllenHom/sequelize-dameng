@@ -6,7 +6,7 @@ const noop = () => {
 
 export const noRawAttributes = deprecate(
   noop,
-  'Use sequelize.fn / sequelize.literal to construct attributes',
+  'Use sequelize-dameng.fn / sequelize-dameng.literal to construct attributes',
   'SEQUELIZE0001'
 );
 

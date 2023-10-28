@@ -10,7 +10,7 @@ class Transaction {
   /**
    * Creates a new transaction instance
    *
-   * @param {Sequelize} sequelize A configured sequelize Instance
+   * @param {Sequelize} sequelize A configured sequelize-dameng Instance
    * @param {object} options An object with options
    * @param {string} [options.type] Sets the type of the transaction. Sqlite only
    * @param {string} [options.isolationLevel] Sets the isolation level of the transaction.
@@ -184,7 +184,7 @@ class Transaction {
   }
 
   /**
-   * Types can be set per-transaction by passing `options.type` to `sequelize.transaction`.
+   * Types can be set per-transaction by passing `options.type` to `sequelize-dameng.transaction`.
    * Default to `DEFERRED` but you can override the default type by passing `options.transactionType` in `new Sequelize`.
    * Sqlite only.
    *
@@ -192,7 +192,7 @@ class Transaction {
    *
    * @example
    * try {
-   *   await sequelize.transaction({ type: Sequelize.Transaction.TYPES.EXCLUSIVE }, transaction => {
+   *   await sequelize-dameng.transaction({ type: Sequelize.Transaction.TYPES.EXCLUSIVE }, transaction => {
    *      // your transactions
    *   });
    *   // transaction has been committed. Do something after the commit if required.
@@ -213,14 +213,14 @@ class Transaction {
   }
 
   /**
-   * Isolation levels can be set per-transaction by passing `options.isolationLevel` to `sequelize.transaction`.
+   * Isolation levels can be set per-transaction by passing `options.isolationLevel` to `sequelize-dameng.transaction`.
    * Sequelize uses the default isolation level of the database, you can override this by passing `options.isolationLevel` in Sequelize constructor options.
    *
    * Pass in the desired level as the first argument:
    *
    * @example
    * try {
-   *   const result = await sequelize.transaction({isolationLevel: Sequelize.Transaction.ISOLATION_LEVELS.SERIALIZABLE}, transaction => {
+   *   const result = await sequelize-dameng.transaction({isolationLevel: Sequelize.Transaction.ISOLATION_LEVELS.SERIALIZABLE}, transaction => {
    *     // your transactions
    *   });
    *   // transaction has been committed. Do something after the commit if required.

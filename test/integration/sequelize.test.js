@@ -334,7 +334,7 @@ describe(Support.getTestDialectTeaser('Sequelize'), () => {
       expect(this.sequelize.modelManager.all.length).to.equal(count + 1);
     });
 
-    it('adds a new dao to sequelize.models', function () {
+    it('adds a new dao to sequelize-dameng.models', function () {
       expect(this.sequelize.models.bar).to.equal(undefined);
       const Bar = this.sequelize.define('bar', { title: DataTypes.STRING });
       expect(this.sequelize.models.bar).to.equal(Bar);
@@ -571,7 +571,7 @@ describe(Support.getTestDialectTeaser('Sequelize'), () => {
       });
     }
 
-    it('return the sequelize instance after syncing', async function () {
+    it('return the sequelize-dameng instance after syncing', async function () {
       const sequelize = await this.sequelize.sync();
       expect(sequelize).to.deep.equal(this.sequelize);
     });

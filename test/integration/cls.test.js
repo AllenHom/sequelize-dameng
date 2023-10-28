@@ -116,7 +116,7 @@ if (current.dialect.supports.transactions) {
       });
     });
 
-    describe('sequelize.query integration', () => {
+    describe('sequelize-dameng.query integration', () => {
       it('automagically uses the transaction in all calls', async function () {
         await this.sequelize.transaction(async () => {
           await this.User.create({ name: 'bob' });
@@ -140,7 +140,7 @@ if (current.dialect.supports.transactions) {
       expect(Sequelize._cls).to.equal(this.ns);
     });
 
-    it('promises returned by sequelize.query are correctly patched', async function () {
+    it('promises returned by sequelize-dameng.query are correctly patched', async function () {
       await this.sequelize.transaction(async t => {
         await this.sequelize.query('select 1', {
           type: Sequelize.QueryTypes.SELECT

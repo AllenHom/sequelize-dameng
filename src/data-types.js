@@ -663,7 +663,7 @@ class UUIDV4 extends ABSTRACT {
  * Return type is mostly useful for setups that rely on types like GraphQL.
  *
  * @example <caption>Checking password length before hashing it</caption>
- * sequelize.define('user', {
+ * sequelize-dameng.define('user', {
  *   password_hash: DataTypes.STRING,
  *   password: {
  *     type: DataTypes.VIRTUAL,
@@ -928,12 +928,12 @@ class MACADDR extends ABSTRACT {
 /**
  * A convenience class holding commonly used data types. The data types are used when defining a new model using `Sequelize.define`, like this:
  * ```js
- * sequelize.define('model', {
+ * sequelize-dameng.define('model', {
  *   column: DataTypes.INTEGER
  * })
  * ```
  * When defining a model you can just as easily pass a string as type, but often using the types defined here is beneficial. For example, using `DataTypes.BLOB`, mean
- * that that column will be returned as an instance of `Buffer` when being fetched by sequelize.
+ * that that column will be returned as an instance of `Buffer` when being fetched by sequelize-dameng.
  *
  * To provide a length for the data type, you can invoke it like a function: `INTEGER(2)`
  *
@@ -947,7 +947,7 @@ class MACADDR extends ABSTRACT {
  * Three of the values provided here (`NOW`, `UUIDV1` and `UUIDV4`) are special default values, that should not be used to define types. Instead they are used as shorthands for
  * defining default values. For example, to get a uuid field with a default value generated following v1 of the UUID standard:
  * ```js
- * sequelize.define('model', {
+ * sequelize-dameng.define('model', {
  *   uuid: {
  *     type: DataTypes.UUID,
  *     defaultValue: DataTypes.UUIDV1,
@@ -959,7 +959,7 @@ class MACADDR extends ABSTRACT {
  * using the defaultValue property as well, but instead of specifying one of the supplied UUID types, you return a value
  * from a function.
  * ```js
- * sequelize.define('model', {
+ * sequelize-dameng.define('model', {
  *   uuid: {
  *     type: DataTypes.UUID,
  *     defaultValue: function() {

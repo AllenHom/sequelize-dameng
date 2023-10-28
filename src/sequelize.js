@@ -20,31 +20,31 @@ const Op = require('./operators');
 const deprecations = require('./utils/deprecations');
 
 /**
- * This is the main class, the entry point to sequelize.
+ * This is the main class, the entry point to sequelize-dameng.
  */
 class Sequelize {
   /**
-   * Instantiate sequelize with name of database, username and password.
+   * Instantiate sequelize-dameng with name of database, username and password.
    *
    * @example
    * // without password / with blank password
-   * const sequelize = new Sequelize('database', 'username', null, {
+   * const sequelize-dameng = new Sequelize('database', 'username', null, {
    *   dialect: 'mysql'
    * })
    *
    * // with password and options
-   * const sequelize = new Sequelize('my_database', 'john', 'doe', {
+   * const sequelize-dameng = new Sequelize('my_database', 'john', 'doe', {
    *   dialect: 'postgres'
    * })
    *
    * // with database, username, and password in the options object
-   * const sequelize = new Sequelize({ database, username, password, dialect: 'mssql' });
+   * const sequelize-dameng = new Sequelize({ database, username, password, dialect: 'mssql' });
    *
    * // with uri
-   * const sequelize = new Sequelize('mysql://localhost:3306/database', {})
+   * const sequelize-dameng = new Sequelize('mysql://localhost:3306/database', {})
    *
    * // option examples
-   * const sequelize = new Sequelize('database', 'username', 'password', {
+   * const sequelize-dameng = new Sequelize('database', 'username', 'password', {
    *   // the sql dialect of the database
    *   // currently supported: 'mysql', 'sqlite', 'postgres', 'mssql'
    *   dialect: 'mysql',
@@ -87,12 +87,12 @@ class Sequelize {
    *   // - default: false
    *   native: true,
    *
-   *   // Specify options, which are used when sequelize.define is called.
+   *   // Specify options, which are used when sequelize-dameng.define is called.
    *   // The following example:
    *   //   define: { timestamps: false }
    *   // is basically the same as:
    *   //   Model.init(attributes, { timestamps: false });
-   *   //   sequelize.define(name, attributes, { timestamps: false });
+   *   //   sequelize-dameng.define(name, attributes, { timestamps: false });
    *   // so defining the timestamps for each model will be not necessary
    *   define: {
    *     underscored: false,
@@ -135,10 +135,10 @@ class Sequelize {
    * @param {string}   [options.storage] Only used by sqlite. Defaults to ':memory:'
    * @param {string}   [options.protocol='tcp'] The protocol of the relational database.
    * @param {object}   [options.define={}] Default options for model definitions. See {@link Model.init}.
-   * @param {object}   [options.query={}] Default options for sequelize.query
+   * @param {object}   [options.query={}] Default options for sequelize-dameng.query
    * @param {string}   [options.schema=null] A schema to use
-   * @param {object}   [options.set={}] Default options for sequelize.set
-   * @param {object}   [options.sync={}] Default options for sequelize.sync
+   * @param {object}   [options.set={}] Default options for sequelize-dameng.set
+   * @param {object}   [options.sync={}] Default options for sequelize-dameng.sync
    * @param {string}   [options.timezone='+00:00'] The timezone used when converting a date from the database into a JavaScript date. The timezone is also used to SET TIMEZONE when connecting to the server, to ensure that the result of NOW, CURRENT_TIMESTAMP and other time related functions have in the right timezone. For best cross platform performance use the format +/-HH:MM. Will also accept string versions of timezones used by moment.js (e.g. 'America/Los_Angeles'); this is useful to capture daylight savings time changes.
    * @param {string|boolean} [options.clientMinMessages='warning'] The PostgreSQL `client_min_messages` session parameter. Set to `false` to not override the database's default.
    * @param {boolean}  [options.standardConformingStrings=true] The PostgreSQL `standard_conforming_strings` session parameter. Set to `false` to not set the option. WARNING: Setting this to false may expose vulnerabilities and is not recommended!
@@ -147,12 +147,12 @@ class Sequelize {
    * @param {boolean}  [options.omitNull=false] A flag that defines if null values should be passed as values to CREATE/UPDATE SQL queries or not.
    * @param {boolean}  [options.native=false] A flag that defines if native library shall be used or not. Currently only has an effect for postgres
    * @param {boolean}  [options.replication=false] Use read / write replication. To enable replication, pass an object, with two properties, read and write. Write should be an object (a single server for handling writes), and read an array of object (several servers to handle reads). Each read/write server can have the following properties: `host`, `port`, `username`, `password`, `database`
-   * @param {object}   [options.pool] sequelize connection pool configuration
+   * @param {object}   [options.pool] sequelize-dameng connection pool configuration
    * @param {number}   [options.pool.max=5] Maximum number of connection in pool
    * @param {number}   [options.pool.min=0] Minimum number of connection in pool
    * @param {number}   [options.pool.idle=10000] The maximum time, in milliseconds, that a connection can be idle before being released.
    * @param {number}   [options.pool.acquire=60000] The maximum time, in milliseconds, that pool will try to get connection before throwing error
-   * @param {number}   [options.pool.evict=1000] The time interval, in milliseconds, after which sequelize-pool will remove idle connections.
+   * @param {number}   [options.pool.evict=1000] The time interval, in milliseconds, after which sequelize-dameng-pool will remove idle connections.
    * @param {Function} [options.pool.validate] A function that validates a connection. Called with client. The default function checks that client is an object, and that its state is not disconnected
    * @param {number}   [options.pool.maxUses=Infinity] The number of times a connection can be used before discarding it for a replacement, [`used for eventual cluster rebalancing`](https://github.com/sequelize/sequelize-pool).
    * @param {boolean}  [options.quoteIdentifiers=true] Set to `false` to make table names and attributes case-insensitive on Postgres and skip double quoting of them.  WARNING: Setting this to false may expose vulnerabilities and is not recommended!
@@ -352,7 +352,7 @@ class Sequelize {
     this.queryInterface = this.dialect.queryInterface;
 
     /**
-     * Models are stored here under the name given to `sequelize.define`
+     * Models are stored here under the name given to `sequelize-dameng.define`
      */
     this.models = {};
     this.modelManager = new ModelManager(this);
@@ -402,7 +402,7 @@ class Sequelize {
    *
    * The table columns are defined by the object that is given as the second argument. Each key of the object represents a column
    *
-   * @param {string} modelName The name of the model. The model will be stored in `sequelize.models` under this name
+   * @param {string} modelName The name of the model. The model will be stored in `sequelize-dameng.models` under this name
    * @param {object} attributes An object, where each attribute is a column of the table. See {@link Model.init}
    * @param {object} [options] These options are merged with the default define options provided to the Sequelize constructor and passed to Model.init()
    *
@@ -414,7 +414,7 @@ class Sequelize {
    * @returns {Model} Newly defined model
    *
    * @example
-   * sequelize.define('modelName', {
+   * sequelize-dameng.define('modelName', {
    *   columnA: {
    *       type: Sequelize.BOOLEAN,
    *       validate: {
@@ -431,7 +431,7 @@ class Sequelize {
    *   columnC: 'MY VERY OWN COLUMN TYPE'
    * });
    *
-   * sequelize.models.modelName // The model will now be available in models under the name given to define
+   * sequelize-dameng.models.modelName // The model will now be available in models under the name given to define
    */
   define(modelName, attributes, options = {}) {
     options.modelName = modelName;
@@ -449,7 +449,7 @@ class Sequelize {
    *
    * @param {string} modelName The name of a model defined with Sequelize.define
    *
-   * @throws Will throw an error if the model is not defined (that is, if sequelize#isDefined returns false)
+   * @throws Will throw an error if the model is not defined (that is, if sequelize-dameng#isDefined returns false)
    * @returns {Model} Specified model
    */
   model(modelName) {
@@ -476,17 +476,17 @@ class Sequelize {
    *
    * By default, the function will return two arguments: an array of results, and a metadata object, containing number of affected rows etc.
    *
-   * If you are running a type of query where you don't need the metadata, for example a `SELECT` query, you can pass in a query type to make sequelize format the results:
+   * If you are running a type of query where you don't need the metadata, for example a `SELECT` query, you can pass in a query type to make sequelize-dameng format the results:
    *
    * ```js
-   * const [results, metadata] = await sequelize.query('SELECT...'); // Raw query - use array destructuring
+   * const [results, metadata] = await sequelize-dameng.query('SELECT...'); // Raw query - use array destructuring
    *
-   * const results = await sequelize.query('SELECT...', { type: sequelize.QueryTypes.SELECT }); // SELECT query - no destructuring
+   * const results = await sequelize-dameng.query('SELECT...', { type: sequelize-dameng.QueryTypes.SELECT }); // SELECT query - no destructuring
    * ```
    *
    * @param {string}          sql
    * @param {object}          [options={}] Query options.
-   * @param {boolean}         [options.raw] If true, sequelize will not try to format the results of the query, or build an instance of a model from the result
+   * @param {boolean}         [options.raw] If true, sequelize-dameng will not try to format the results of the query, or build an instance of a model from the result
    * @param {Transaction}     [options.transaction=null] The transaction that the query should be executed under
    * @param {QueryTypes}      [options.type='RAW'] The type of query you are executing. The query type affects how results are formatted before they are passed back. The type is a string, but `Sequelize.QueryTypes` is provided as convenience shortcuts.
    * @param {boolean}         [options.nest=false] If true, transforms objects with `.` separated property names into nested objects using [dottie.js](https://github.com/mickhansen/dottie.js). For example { 'user.username': 'john' } becomes { user: { username: 'john' }}. When `nest` is true, the query type is assumed to be `'SELECT'`, unless otherwise specified
@@ -495,8 +495,8 @@ class Sequelize {
    * @param {object|Array}    [options.bind] Either an object of named bind parameter in the format `_param` or an array of unnamed bind parameter to replace `$1, $2, ...` in your SQL.
    * @param {boolean}         [options.useMaster=false] Force the query to use the write pool, regardless of the query type.
    * @param {Function}        [options.logging=false] A function that gets executed while running the query to log the sql.
-   * @param {Model}           [options.instance] A sequelize model instance whose Model is to be used to build the query result
-   * @param {typeof Model}    [options.model] A sequelize model used to build the returned model instances
+   * @param {Model}           [options.instance] A sequelize-dameng model instance whose Model is to be used to build the query result
+   * @param {typeof Model}    [options.model] A sequelize-dameng model used to build the returned model instances
    * @param {object}          [options.retry] Set of flags that control when a query is automatically retried. Accepts all options for [`retry-as-promised`](https://github.com/mickhansen/retry-as-promised).
    * @param {Array}           [options.retry.match] Only retry a query if the error matches one of these strings.
    * @param {Integer}         [options.retry.max] How many times a failing query is automatically retried.
@@ -652,7 +652,7 @@ class Sequelize {
     };
 
     if (this.options.dialect !== 'mysql') {
-      throw new Error('sequelize.set is only supported for mysql');
+      throw new Error('sequelize-dameng.set is only supported for mysql');
     }
     if (!options.transaction || !(options.transaction instanceof Transaction)) {
       throw new TypeError('options.transaction is required');
@@ -752,7 +752,7 @@ class Sequelize {
    * @param {boolean} [options.force=false] If force is true, each Model will run `DROP TABLE IF EXISTS`, before it tries to create its own table
    * @param {RegExp} [options.match] Match a regex against the database name before syncing, a safety check for cases where force: true is used in tests but not live code
    * @param {boolean|Function} [options.logging=console.log] A function that logs sql queries, or false for no logging
-   * @param {string} [options.schema='public'] The schema that the tables should be created in. This can be overridden for each table in sequelize.define
+   * @param {string} [options.schema='public'] The schema that the tables should be created in. This can be overridden for each table in sequelize-dameng.define
    * @param {string} [options.searchPath=DEFAULT] An optional parameter to specify the schema search_path (Postgres only)
    * @param {boolean} [options.hooks=true] If hooks is true then beforeSync, afterSync, beforeBulkSync, afterBulkSync hooks will be called
    * @param {boolean|object} [options.alter=false] Alters tables to fit models. Provide an object for additional configuration. Not recommended for production use. If not further configured deletes data in columns that were removed or had their type changed in the model.
@@ -805,7 +805,7 @@ class Sequelize {
   }
 
   /**
-   * Truncate all tables defined through the sequelize models.
+   * Truncate all tables defined through the sequelize-dameng models.
    * This is done by calling `Model.truncate()` on each model.
    *
    * @param {object} [options] The options passed to Model.destroy in addition to truncate
@@ -834,7 +834,7 @@ class Sequelize {
   }
 
   /**
-   * Drop all tables defined through this sequelize instance.
+   * Drop all tables defined through this sequelize-dameng instance.
    * This is done by calling Model.drop on each model.
    *
    * @see
@@ -899,7 +899,7 @@ class Sequelize {
 
   /**
    * Creates an object representing a database function. This can be used in search queries, both in where and order parts, and as default values in column definitions.
-   * If you want to refer to columns in your function, you should use `sequelize.col`, so that the columns are properly interpreted as columns and not a strings.
+   * If you want to refer to columns in your function, you should use `sequelize-dameng.col`, so that the columns are properly interpreted as columns and not a strings.
    *
    * @see
    * {@link Model.findAll}
@@ -917,7 +917,7 @@ class Sequelize {
    *
    * @example <caption>Convert a user's username to upper case</caption>
    * instance.update({
-   *   username: sequelize.fn('upper', sequelize.col('username'))
+   *   username: sequelize-dameng.fn('upper', sequelize-dameng.col('username'))
    * });
    */
   static fn(fn, ...args) {
@@ -925,7 +925,7 @@ class Sequelize {
   }
 
   /**
-   * Creates an object which represents a column in the DB, this allows referencing another column in your query. This is often useful in conjunction with `sequelize.fn`, since raw string arguments to fn will be escaped.
+   * Creates an object which represents a column in the DB, this allows referencing another column in your query. This is often useful in conjunction with `sequelize-dameng.fn`, since raw string arguments to fn will be escaped.
    *
    * @see
    * {@link Sequelize#fn}
@@ -1019,14 +1019,14 @@ class Sequelize {
    * A way of specifying attr = condition.
    *
    * The attr can either be an object taken from `Model.rawAttributes` (for example `Model.rawAttributes.id` or `Model.rawAttributes.name`). The
-   * attribute should be defined in your model definition. The attribute can also be an object from one of the sequelize utility functions (`sequelize.fn`, `sequelize.col` etc.)
+   * attribute should be defined in your model definition. The attribute can also be an object from one of the sequelize-dameng utility functions (`sequelize-dameng.fn`, `sequelize-dameng.col` etc.)
    *
-   * For string attributes, use the regular `{ where: { attr: something }}` syntax. If you don't want your string to be escaped, use `sequelize.literal`.
+   * For string attributes, use the regular `{ where: { attr: something }}` syntax. If you don't want your string to be escaped, use `sequelize-dameng.literal`.
    *
    * @see
    * {@link Model.findAll}
    *
-   * @param {object} attr The attribute, which can be either an attribute object from `Model.rawAttributes` or a sequelize object, for example an instance of `sequelize.fn`. For simple string attributes, use the POJO syntax
+   * @param {object} attr The attribute, which can be either an attribute object from `Model.rawAttributes` or a sequelize-dameng object, for example an instance of `sequelize-dameng.fn`. For simple string attributes, use the POJO syntax
    * @param {symbol} [comparator='Op.eq'] operator
    * @param {string|object} logic The condition. Can be both a simply type, or a further condition (`or`, `and`, `.literal` etc.)
    * @since v2.0.0-dev3
@@ -1043,7 +1043,7 @@ class Sequelize {
    * @example
    *
    * try {
-   *   const transaction = await sequelize.transaction();
+   *   const transaction = await sequelize-dameng.transaction();
    *   const user = await User.findOne(..., { transaction });
    *   await user.update(..., { transaction });
    *   await transaction.commit();
@@ -1054,7 +1054,7 @@ class Sequelize {
    * @example <caption>A syntax for automatically committing or rolling back based on the promise chain resolution is also supported</caption>
    *
    * try {
-   *   await sequelize.transaction(transaction => { // Note that we pass a callback rather than awaiting the call with no arguments
+   *   await sequelize-dameng.transaction(transaction => { // Note that we pass a callback rather than awaiting the call with no arguments
    *     const user = await User.findOne(..., {transaction});
    *     await user.update(..., {transaction});
    *   });
@@ -1063,14 +1063,14 @@ class Sequelize {
    *   // Rolled back
    *   console.error(err);
    * }
-   * @example <caption>To enable CLS, add it do your project, create a namespace and set it on the sequelize constructor:</caption>
+   * @example <caption>To enable CLS, add it do your project, create a namespace and set it on the sequelize-dameng constructor:</caption>
    *
    * const cls = require('cls-hooked');
    * const namespace = cls.createNamespace('....');
-   * const Sequelize = require('sequelize');
+   * const Sequelize = require('sequelize-dameng');
    * Sequelize.useCLS(namespace);
    *
-   * // Note, that CLS is enabled for all sequelize instances, and all instances will share the same namespace
+   * // Note, that CLS is enabled for all sequelize-dameng instances, and all instances will share the same namespace
    *
    * @param {object}   [options] Transaction options
    * @param {string}   [options.type='DEFERRED'] See `Sequelize.Transaction.TYPES` for possible options. Sqlite only.
@@ -1185,7 +1185,7 @@ class Sequelize {
   }
 
   /**
-   * Close all connections used by this sequelize instance, and free all references so the instance can be garbage collected.
+   * Close all connections used by this sequelize-dameng instance, and free all references so the instance can be garbage collected.
    *
    * Normally this is done on process exit, so you only need to call this method if you are creating multiple instances, and want
    * to garbage collect some of them.
@@ -1298,7 +1298,7 @@ Sequelize.TableHints = TableHints;
 Sequelize.IndexHints = IndexHints;
 
 /**
- * A reference to the sequelize transaction class. Use this to access isolationLevels and types when creating a transaction
+ * A reference to the sequelize-dameng transaction class. Use this to access isolationLevels and types when creating a transaction
  *
  * @see {@link Transaction}
  * @see {@link Sequelize.transaction}
@@ -1306,14 +1306,14 @@ Sequelize.IndexHints = IndexHints;
 Sequelize.Transaction = Transaction;
 
 /**
- * A reference to Sequelize constructor from sequelize. Useful for accessing DataTypes, Errors etc.
+ * A reference to Sequelize constructor from sequelize-dameng. Useful for accessing DataTypes, Errors etc.
  *
  * @see {@link Sequelize}
  */
 Sequelize.prototype.Sequelize = Sequelize;
 
 /**
- * Available query types for use with `sequelize.query`
+ * Available query types for use with `sequelize-dameng.query`
  *
  * @see {@link QueryTypes}
  */
@@ -1342,7 +1342,7 @@ for (const dataType in DataTypes) {
 Sequelize.Deferrable = Deferrable;
 
 /**
- * A reference to the sequelize association class.
+ * A reference to the sequelize-dameng association class.
  *
  * @see {@link Association}
  */
@@ -1356,8 +1356,8 @@ Sequelize.prototype.Association = Sequelize.Association = Association;
 Sequelize.useInflection = Utils.useInflection;
 
 /**
- * Allow hooks to be defined on Sequelize + on sequelize instance as universal hooks to run on all models
- * and on Sequelize/sequelize methods e.g. Sequelize(), Sequelize#define()
+ * Allow hooks to be defined on Sequelize + on sequelize-dameng instance as universal hooks to run on all models
+ * and on Sequelize/sequelize-dameng methods e.g. Sequelize(), Sequelize#define()
  */
 Hooks.applyTo(Sequelize);
 Hooks.applyTo(Sequelize.prototype);

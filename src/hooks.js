@@ -510,7 +510,7 @@ exports.applyTo = applyTo;
  * A hook that is run after Sequelize() call
  *
  * @param {string}   name
- * @param {Function} fn   A callback function that is called with sequelize
+ * @param {Function} fn   A callback function that is called with sequelize-dameng
  * @name afterInit
  * @memberof Sequelize
  */
@@ -570,19 +570,19 @@ exports.applyTo = applyTo;
  */
 
 /**
- * A hook that is run before sequelize.sync call
+ * A hook that is run before sequelize-dameng.sync call
  *
  * @param {string}   name
- * @param {Function} fn   A callback function that is called with options passed to sequelize.sync
+ * @param {Function} fn   A callback function that is called with options passed to sequelize-dameng.sync
  * @name beforeBulkSync
  * @memberof Sequelize
  */
 
 /**
- * A hook that is run after sequelize.sync call
+ * A hook that is run after sequelize-dameng.sync call
  *
  * @param {string}   name
- * @param {Function} fn   A callback function that is called with options passed to sequelize.sync
+ * @param {Function} fn   A callback function that is called with options passed to sequelize-dameng.sync
  * @name afterBulkSync
  * @memberof Sequelize
  */

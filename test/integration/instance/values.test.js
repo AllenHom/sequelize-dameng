@@ -119,7 +119,7 @@ describe(Support.getTestDialectTeaser('DAO'), () => {
         expect(user.dataValues.email).not.to.be.ok;
       });
 
-      it('allows use of sequelize.fn and sequelize.col in date and bool fields', async function () {
+      it('allows use of sequelize-dameng.fn and sequelize-dameng.col in date and bool fields', async function () {
         const User = this.sequelize.define(
           'User',
           {

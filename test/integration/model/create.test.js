@@ -674,10 +674,10 @@ describe(Support.getTestDialectTeaser('Model'), () => {
       });
 
       await this.sequelize.sync({ force: true });
-      await User.create({ email: 'hello@sequelize.com' });
+      await User.create({ email: 'hello@sequelize-dameng.com' });
 
       try {
-        await User.create({ email: 'hello@sequelize.com' });
+        await User.create({ email: 'hello@sequelize-dameng.com' });
         assert(false);
       } catch (err) {
         expect(err).to.be.ok;
@@ -911,9 +911,9 @@ describe(Support.getTestDialectTeaser('Model'), () => {
       expect(user0.secretValue).to.equal('SEQUELIZE');
     });
 
-    it('should escape $ in sequelize functions arguments', async function () {
+    it('should escape $ in sequelize-dameng functions arguments', async function () {
       const user = await this.User.create({
-        secretValue: this.sequelize.fn('upper', '$sequelize')
+        secretValue: this.sequelize.fn('upper', '$sequelize-dameng')
       });
 
       const user0 = await this.User.findByPk(user.id);
@@ -1473,7 +1473,7 @@ describe(Support.getTestDialectTeaser('Model'), () => {
           await Enum.sync({ force: true });
         });
 
-        it('through sequelize', async function () {
+        it('through sequelize-dameng', async function () {
           this.sequelize.define('Enum', {
             state: {
               type: Sequelize.ENUM,

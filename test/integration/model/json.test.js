@@ -705,7 +705,7 @@ describe(Support.getTestDialectTeaser('Model'), () => {
           });
         });
 
-        it('should properly escape path keys with sequelize.json', async function () {
+        it('should properly escape path keys with sequelize-dameng.json', async function () {
           await this.Model.findAll({
             raw: true,
             attributes: ['id'],

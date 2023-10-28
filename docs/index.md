@@ -27,7 +27,7 @@ You are currently looking at the **Tutorials and Guides** for Sequelize. You mig
 ## Quick example
 
 ```js
-const { Sequelize, Model, DataTypes } = require('sequelize');
+const { Sequelize, Model, DataTypes } = require('sequelize-dameng');
 const sequelize = new Sequelize('sqlite::memory:');
 
 class User extends Model {}

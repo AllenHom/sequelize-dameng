@@ -1,5 +1,5 @@
 /**
- * An enum of query types used by `sequelize.query`
+ * An enum of query types used by `sequelize-dameng.query`
  *
  * @see {@link Sequelize#query}
  */

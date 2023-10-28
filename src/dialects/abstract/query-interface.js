@@ -709,7 +709,7 @@ class QueryInterface {
    * @param {object} options                     An object to define the constraint name, type etc
    * @param {string} options.type                Type of constraint. One of the values in available constraints(case insensitive)
    * @param {Array}  options.fields              Array of column names to apply the constraint over
-   * @param {string} [options.name]              Name of the constraint. If not specified, sequelize automatically creates a named constraint based on constraint type, table & column names
+   * @param {string} [options.name]              Name of the constraint. If not specified, sequelize-dameng automatically creates a named constraint based on constraint type, table & column names
    * @param {string} [options.defaultValue]      The value for the default constraint
    * @param {object} [options.where]             Where clause/expression for the CHECK constraint
    * @param {object} [options.references]        Object specifying target table, column name to create foreign key constraint

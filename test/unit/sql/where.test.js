@@ -368,13 +368,13 @@ describe(Support.getTestDialectTeaser('SQL'), () => {
           }
         );
 
-        it('sequelize.or({group_id: 1}, {user_id: 2})', function () {
+        it('sequelize-dameng.or({group_id: 1}, {user_id: 2})', function () {
           expectsql(sql.whereItemQuery(undefined, this.sequelize.or({ group_id: 1 }, { user_id: 2 })), {
             default: '([group_id] = 1 OR [user_id] = 2)'
           });
         });
 
-        it("sequelize.or({group_id: 1}, {user_id: 2, role: 'admin'})", function () {
+        it("sequelize-dameng.or({group_id: 1}, {user_id: 2, role: 'admin'})", function () {
           expectsql(sql.whereItemQuery(undefined, this.sequelize.or({ group_id: 1 }, { user_id: 2, role: 'admin' })), {
             default: "([group_id] = 1 OR ([user_id] = 2 AND [role] = 'admin'))",
             mssql: "([group_id] = 1 OR ([user_id] = 2 AND [role] = N'admin'))"
@@ -393,7 +393,7 @@ describe(Support.getTestDialectTeaser('SQL'), () => {
           }
         );
 
-        it('sequelize.or()', function () {
+        it('sequelize-dameng.or()', function () {
           expectsql(sql.whereItemQuery(undefined, this.sequelize.or()), {
             default: '0 = 1'
           });
@@ -459,7 +459,7 @@ describe(Support.getTestDialectTeaser('SQL'), () => {
           }
         );
 
-        it('sequelize.and({shared: 1, sequelize.or({group_id: 1}, {user_id: 2}))', function () {
+        it('sequelize-dameng.and({shared: 1, sequelize-dameng.or({group_id: 1}, {user_id: 2}))', function () {
           expectsql(
             sql.whereItemQuery(
               undefined,
@@ -1226,7 +1226,7 @@ describe(Support.getTestDialectTeaser('SQL'), () => {
 
     if (current.dialect.supports.JSON) {
       describe('JSON', () => {
-        it('sequelize.json("profile.id"), sequelize.cast(2, \'text\')")', function () {
+        it('sequelize-dameng.json("profile.id"), sequelize-dameng.cast(2, \'text\')")', function () {
           expectsql(
             sql.whereItemQuery(
               undefined,
@@ -1241,7 +1241,7 @@ describe(Support.getTestDialectTeaser('SQL'), () => {
           );
         });
 
-        it('sequelize.json({profile: {id: "12346-78912", name: "test"}})', function () {
+        it('sequelize-dameng.json({profile: {id: "12346-78912", name: "test"}})', function () {
           expectsql(
             sql.whereItemQuery(
               undefined,
@@ -1708,7 +1708,7 @@ describe(Support.getTestDialectTeaser('SQL'), () => {
     }
 
     describe('fn', () => {
-      it("{name: this.sequelize.fn('LOWER', 'DERP')}", function () {
+      it("{name: this.sequelize-dameng.fn('LOWER', 'DERP')}", function () {
         expectsql(sql.whereQuery({ name: this.sequelize.fn('LOWER', 'DERP') }), {
           default: "WHERE [name] = LOWER('DERP')",
           mssql: "WHERE [name] = LOWER(N'DERP')"

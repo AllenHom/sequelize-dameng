@@ -1560,7 +1560,7 @@ describe(Support.getTestDialectTeaser('Model'), () => {
         expect(user).to.have.length(1);
       });
 
-      it('should be possible to order by sequelize.col()', async function () {
+      it('should be possible to order by sequelize-dameng.col()', async function () {
         const Company = this.sequelize.define('Company', {
           name: Sequelize.STRING
         });

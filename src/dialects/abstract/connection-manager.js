@@ -10,7 +10,7 @@ const debug = logger.debugContext('pool');
  * Abstract Connection Manager
  *
  * Connection manager which handles pooling & replication.
- * Uses sequelize-pool for pooling
+ * Uses sequelize-dameng-pool for pooling
  *
  * @private
  */
@@ -183,7 +183,7 @@ class ConnectionManager {
       },
       drain: async () => Promise.all([this.pool.write.drain(), this.pool.read.drain()]),
       read: new Pool({
-        name: 'sequelize:read',
+        name: 'sequelize-dameng:read',
         create: async () => {
           // round robin config
           const nextRead = reads++ % config.replication.read.length;
@@ -201,7 +201,7 @@ class ConnectionManager {
         maxUses: config.pool.maxUses
       }),
       write: new Pool({
-        name: 'sequelize:write',
+        name: 'sequelize-dameng:write',
         create: async () => {
           const connection = await this._connect(config.replication.write);
           connection.queryType = 'write';

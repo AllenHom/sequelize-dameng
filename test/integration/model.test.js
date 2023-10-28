@@ -419,7 +419,7 @@ describe(Support.getTestDialectTeaser('Model'), () => {
     });
 
     // If you use migrations to create unique indexes that have explicit names and/or contain fields
-    // that have underscore in their name. Then sequelize must use the index name to map the custom message to the error thrown from db.
+    // that have underscore in their name. Then sequelize-dameng must use the index name to map the custom message to the error thrown from db.
     it('allows us to map the customized error message with unique constraint name', async function () {
       // Fake migration style index creation with explicit index definition
       let User = this.sequelize.define(

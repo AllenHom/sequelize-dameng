@@ -291,7 +291,7 @@ describe(Support.getTestDialectTeaser('Hooks'), () => {
     });
   });
 
-  describe('sequelize#sync', () => {
+  describe('sequelize-dameng#sync', () => {
     describe('on success', () => {
       it('should run hooks', async function () {
         const beforeHook = sinon.spy(),

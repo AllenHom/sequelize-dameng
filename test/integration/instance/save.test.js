@@ -416,7 +416,7 @@ describe(Support.getTestDialectTeaser('Instance'), () => {
 
     it('updates with function that contains escaped dollar symbol', async function () {
       const user = await this.User.create({});
-      user.username = this.sequelize.fn('upper', '$sequelize');
+      user.username = this.sequelize.fn('upper', '$sequelize-dameng');
       await user.save();
       const userAfterUpdate = await this.User.findByPk(user.id);
       expect(userAfterUpdate.username).to.equal('$SEQUELIZE');
