@@ -1,7 +1,7 @@
 {
   "name": "sequelize-dameng",
   "description": "Multi dialect ORM for Node.JS",
-  "version": "0.0.16-development",
+  "version": "0.0.19-development",
   "maintainers": [
     "Pedro Augusto de Paula Barbosa <papb1996@gmail.com>"
   ],
