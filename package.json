@@ -1,9 +1,9 @@
 {
   "name": "sequelize-dameng",
-  "description": "Multi dialect ORM for Node.JS",
-  "version": "0.0.19-development",
+  "description": "兼容达梦数据库V8",
+  "version": "0.0.1",
   "maintainers": [
-    "Pedro Augusto de Paula Barbosa <papb1996@gmail.com>"
+    "兼容达梦数据库V8 <tju.leikang@gmail.com>"
   ],
   "repository": {
     "type": "git",
