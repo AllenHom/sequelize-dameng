@@ -1,16 +1,16 @@
 {
   "name": "sequelize-dameng",
   "description": "兼容达梦数据库V8",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "maintainers": [
-    "兼容达梦数据库V8 <tju.leikang@gmail.com>"
+    "兼容达梦数据库V8 <1550023234@qq.com>"
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/0x32Studio/sequelize-dameng"
+    "url": "https://github.com/AllenHom/sequelize-dameng"
   },
   "bugs": {
-    "url": "https://github.com/0x32Studio/sequelize-dameng/issues"
+    "url": "https://github.com/AllenHom/sequelize-dameng/issues"
   },
   "homepage": "https://sequelize.org/",
   "main": "index.js",
