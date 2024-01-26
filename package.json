@@ -1,7 +1,7 @@
 {
   "name": "sequelize-damengdb",
   "description": "兼容达梦数据库V8",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "maintainers": [
     "兼容达梦数据库V8 <1550023234@qq.com>"
   ],
